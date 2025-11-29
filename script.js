@@ -1,52 +1,33 @@
-// Clase Estudiante
-class Estudiante {
- constructor(nombre, notas) {
- this.nombre = nombre;
- this.notas = notas;
- }
+let estudiantes = prompt("nombre del estudiante");
+console.log(estudiantes);
 
- calcularNotaFinal() {
- let notaFinal = 0;
- for (let i = 0; i < this.notas.length; i++) {
- notaFinal += this.notas[i];
- }
- return notaFinal / this.notas.length;
- }
+const DNI =prompt ("ingrese su Numero de DNI");
+console.log("dni: " + DNI);
+
+let notas = [];
+for (let i = 0; i < 3; i++) {
+  let nota = parseInt(prompt(`Ingrese la nota ${i + 1}:`));
+  notas.push(nota);
+}
+console.log(notas);
+
+
+function calcularNotaFinal() {
+  let notaFinal = 0;
+  for (let i = 0; i < notas.length; i++) {
+    notaFinal += notas[i]; // suma cada nota al total
+  }
+  notaFinal /= notas.length; // divide por la cantidad de notas
+  console.log("su promedio es " + notaFinal.toFixed(2));
+
+  if (notaFinal >= 7) { // Cambié notafinal a notaFinal
+  alert("El alumno se encuentra aprobado.su promedio es " + notaFinal.toFixed(2));
+} else {
+  alert("El alumno se encuentra desaprobado. su promedio es " + notaFinal.toFixed(2));
 }
 
-// Array de estudiantes
-let estudiantes = [];
-
-// Función para agregar estudiantes
-function agregarEstudiante() {
- let nombre = prompt("Ingrese el nombre del estudiante:");
- let notas = [];
- for (let i = 0; i < 3; i++) {
- let nota = parseFloat(prompt("Ingrese la nota " + (i+1) + " del estudiante:"));
- notas.push(nota);
- }
- let estudiante = new Estudiante(nombre, notas);
- estudiantes.push(estudiante);
- alert("Estudiante agregado con éxito!");
 }
 
-// Función para mostrar los estudiantes
-function mostrarEstudiantes() {
- console.log("Estudiantes:");
- for (let i = 0; i < estudiantes.length; i++) {
- console.log(`${i+1}. ${estudiantes[i].nombre}`);
- }
-}
+calcularNotaFinal();
 
-// Función para calcular las notas finales
-function calcularNotasFinales() {
- for (let i = 0; i < estudiantes.length; i++) {
- let notaFinal = estudiantes[i].calcularNotaFinal();
- console.log(`La nota final del estudiante ${estudiantes[i].nombre} es: ${notaFinal.toFixed(2)}`);
- }
-}
 
-// Llamadas a las funciones
-agregarEstudiante();
-mostrarEstudiantes();
-calcularNotasFinales();
